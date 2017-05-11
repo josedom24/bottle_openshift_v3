@@ -1,7 +1,12 @@
-import os
-# Change working directory so relative paths (and template lookup) work again
-os.chdir(os.path.dirname(__file__))
-from aplicacion import app
-# ... build or import your bottle application here ...
-# Do NOT use bottle.run() with mod_wsgi
-application = app
+import bottle
+from bottle import route, run, template
+
+@route('/')
+def index(name):
+    return '<b>Hello word!!!</b>'
+
+if __name__ == "__main__":
+    run(host='localhost', port=8080)
+
+app = bottle.default_app()
+
